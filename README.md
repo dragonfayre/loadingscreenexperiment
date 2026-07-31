@@ -7,5 +7,7 @@ Control: Blank Screen
 Test Cases:
 
 > Skeleton Screen
+
 > Loading Bar
+
 > Spinner
