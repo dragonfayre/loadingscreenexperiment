@@ -1,163 +1,101 @@
 [
   {
-    "screen": "skeleton",
-    "start_time": "2026-08-01T14:02:22.112320",
-    "event": "close",
-    "wait_seconds": "10.75",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:02:36.746438"
-  },
-  {
-    "screen": "skeleton",
-    "start_time": "2026-08-01T14:02:22.112320",
-    "event": "close",
-    "wait_seconds": "1.62",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:02:38.377543"
-  },
-  {
-    "screen": null,
-    "start_time": null,
-    "event": "close",
-    "wait_seconds": "3.00",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:02:41.402130"
-  },
-  {
+    "user_id": "f60ba799-6bce-404f-99c7-51d3501c090b",
     "screen": "game",
-    "start_time": "2026-08-01T14:02:46.009975",
+    "start_time": "2026-08-01T21:10:56.579934",
     "event": "close",
-    "wait_seconds": "9.29",
-    "game_score": 13,
-    "timestamp": "2026-08-01T14:02:55.318015"
+    "wait_seconds": "9.93",
+    "game_score": 2,
+    "timestamp": "2026-08-01T21:11:06.530404"
   },
   {
+    "user_id": "f60ba799-6bce-404f-99c7-51d3501c090b",
     "screen": "game",
-    "start_time": "2026-08-01T14:02:46.009975",
+    "start_time": "2026-08-01T21:10:56.579934",
     "event": "close",
-    "wait_seconds": "19.30",
+    "wait_seconds": "2.04",
     "game_score": 0,
-    "timestamp": "2026-08-01T14:03:14.627673"
+    "timestamp": "2026-08-01T21:11:08.570302"
   },
   {
+    "user_id": "f60ba799-6bce-404f-99c7-51d3501c090b",
     "screen": "game",
-    "start_time": "2026-08-01T14:02:46.009975",
+    "start_time": "2026-08-01T21:10:56.579934",
     "event": "close",
-    "wait_seconds": "11.27",
+    "wait_seconds": "4.40",
     "game_score": 3,
-    "timestamp": "2026-08-01T14:03:25.894003"
-  },
-  {
-    "screen": null,
-    "start_time": null,
-    "event": "close",
-    "wait_seconds": "16.48",
-    "game_score": 0,
-    "timestamp": "2026-08-01T14:03:42.401404"
-  },
-  {
-    "screen": null,
-    "start_time": null,
-    "event": "close",
-    "wait_seconds": "4.72",
-    "game_score": 0,
-    "timestamp": "2026-08-01T14:03:51.819162"
-  },
-  {
-    "screen": null,
-    "start_time": null,
-    "event": "close",
-    "wait_seconds": "5.00",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:04:05.874252"
-  },
-  {
-    "screen": null,
-    "start_time": null,
-    "event": "close",
-    "wait_seconds": "3.88",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:04:15.358893"
+    "timestamp": "2026-08-01T21:11:12.978717"
   },
   {
     "user_id": null,
     "screen": null,
     "start_time": null,
     "event": "close",
-    "wait_seconds": "3.82",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:09:31.791930"
+    "wait_seconds": "1.91",
+    "game_score": 0,
+    "timestamp": "2026-08-01T21:11:14.907702"
   },
   {
-    "user_id": "a52c2407-a958-48c4-a31d-7f801497b760",
+    "user_id": "68a0a195-50ae-4217-9abe-bdb19fcf06d3",
     "screen": "skeleton",
-    "start_time": "2026-08-01T14:09:36.467050",
+    "start_time": "2026-08-01T21:11:20.036104",
     "event": "close",
-    "wait_seconds": "1.70",
+    "wait_seconds": "6.22",
     "game_score": null,
-    "timestamp": "2026-08-01T14:09:41.770312"
+    "timestamp": "2026-08-01T21:11:26.279481"
+  },
+  {
+    "user_id": "68a0a195-50ae-4217-9abe-bdb19fcf06d3",
+    "screen": "skeleton",
+    "start_time": "2026-08-01T21:11:20.036104",
+    "event": "close",
+    "wait_seconds": "0.70",
+    "game_score": null,
+    "timestamp": "2026-08-01T21:11:27.002072"
   },
   {
     "user_id": null,
     "screen": null,
     "start_time": null,
     "event": "close",
-    "wait_seconds": "5.76",
+    "wait_seconds": "5.16",
     "game_score": null,
-    "timestamp": "2026-08-01T14:09:42.268397"
+    "timestamp": "2026-08-01T21:11:32.191591"
   },
   {
     "user_id": null,
     "screen": null,
     "start_time": null,
     "event": "close",
-    "wait_seconds": "1.78",
+    "wait_seconds": "1.91",
     "game_score": 1,
-    "timestamp": "2026-08-01T14:09:48.285197"
+    "timestamp": "2026-08-01T21:11:38.014693"
   },
   {
-    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
-    "screen": "stay",
-    "start_time": "2026-08-01T14:09:51.832736",
+    "user_id": "db4bcfda-01ff-4086-b7f1-d2e0e4ee10f4",
+    "screen": "spinner",
+    "start_time": "2026-08-01T21:11:42.470023",
     "event": "close",
-    "wait_seconds": "7.13",
+    "wait_seconds": "2.06",
     "game_score": null,
-    "timestamp": "2026-08-01T14:09:58.999217"
+    "timestamp": "2026-08-01T21:11:44.549080"
   },
   {
-    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
-    "screen": "stay",
-    "start_time": "2026-08-01T14:09:51.832736",
+    "user_id": "db4bcfda-01ff-4086-b7f1-d2e0e4ee10f4",
+    "screen": "spinner",
+    "start_time": "2026-08-01T21:11:42.470023",
     "event": "close",
-    "wait_seconds": "54.92",
+    "wait_seconds": "0.50",
     "game_score": null,
-    "timestamp": "2026-08-01T14:10:55.673043"
+    "timestamp": "2026-08-01T21:11:45.051200"
   },
   {
-    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
-    "screen": "stay",
-    "start_time": "2026-08-01T14:09:51.832736",
+    "user_id": null,
+    "screen": null,
+    "start_time": null,
     "event": "close",
-    "wait_seconds": "1.24",
+    "wait_seconds": "6.81",
     "game_score": null,
-    "timestamp": "2026-08-01T14:10:56.914458"
-  },
-  {
-    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
-    "screen": "stay",
-    "start_time": "2026-08-01T14:09:51.832736",
-    "event": "close",
-    "wait_seconds": "2.75",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:10:59.683135"
-  },
-  {
-    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
-    "screen": "stay",
-    "start_time": "2026-08-01T14:09:51.832736",
-    "event": "close",
-    "wait_seconds": "13.07",
-    "game_score": null,
-    "timestamp": "2026-08-01T14:11:14.585394"
+    "timestamp": "2026-08-01T21:11:51.895228"
   }
 ]

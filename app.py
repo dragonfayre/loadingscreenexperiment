@@ -6,7 +6,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, jsonify, session
 
 app = Flask(__name__)
-app.secret_key = "loading_experiment_secret"
+app.secret_key = os.environ.get("SECRET_KEY", "loading_experiment_secret")
 
 DATA_FILE = "data.json"
 SCREENS = ["blank", "stay", "spinner", "skeleton", "game"]
@@ -66,4 +66,4 @@ def event():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
