@@ -10,6 +10,15 @@ app.secret_key = "loading_experiment_secret"
 DATA_FILE = "data.json"
 SCREENS = ["blank", "stay", "spinner", "skeleton", "game"]
 
+def next_screen():
+    queue = session.get("screen_queue", [])
+    if not queue:
+        queue = SCREENS[:]
+        random.shuffle(queue)
+    screen = queue.pop()
+    session["screen_queue"] = queue
+    return screen
+
 
 def load_data():
     if not os.path.exists(DATA_FILE):
@@ -30,10 +39,10 @@ def index():
 
 @app.route("/loading")
 def loading():
-    screen = random.choice(SCREENS)
-    session["screen"] = screen
-    session["start_time"] = datetime.now().isoformat()
-    return render_template("loading.html", screen=screen)
+    if "screen" not in session:
+        session["screen"] = next_screen()
+        session["start_time"] = datetime.now().isoformat()
+    return render_template("loading.html", screen=session["screen"])
 
 
 @app.route("/event", methods=["POST"])

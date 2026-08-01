@@ -107,17 +107,15 @@
     navigator.sendBeacon("/event", new Blob([JSON.stringify(payload)], { type: "application/json" }));
   }
 
-  // detect close / navigate away
-  window.addEventListener("pagehide", () => {
-    // distinguish refresh vs close is unreliable cross-browser;
-    // we use visibilitychange as a best-effort signal
-    sendEvent("close_or_refresh");
+  window.addEventListener("pagehide", (e) => {
+    const navType = performance.getEntriesByType("navigation")[0]?.type;
+    sendEvent(navType === "reload" ? "refresh" : "close");
   });
 
-  // more reliable: visibilitychange hidden = user switched away / closed
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
-      sendEvent("close_or_refresh");
+      const navType = performance.getEntriesByType("navigation")[0]?.type;
+      sendEvent(navType === "reload" ? "refresh" : "close");
     }
   });
 </script>
