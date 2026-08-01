@@ -1,0 +1,163 @@
+[
+  {
+    "screen": "skeleton",
+    "start_time": "2026-08-01T14:02:22.112320",
+    "event": "close",
+    "wait_seconds": "10.75",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:02:36.746438"
+  },
+  {
+    "screen": "skeleton",
+    "start_time": "2026-08-01T14:02:22.112320",
+    "event": "close",
+    "wait_seconds": "1.62",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:02:38.377543"
+  },
+  {
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "3.00",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:02:41.402130"
+  },
+  {
+    "screen": "game",
+    "start_time": "2026-08-01T14:02:46.009975",
+    "event": "close",
+    "wait_seconds": "9.29",
+    "game_score": 13,
+    "timestamp": "2026-08-01T14:02:55.318015"
+  },
+  {
+    "screen": "game",
+    "start_time": "2026-08-01T14:02:46.009975",
+    "event": "close",
+    "wait_seconds": "19.30",
+    "game_score": 0,
+    "timestamp": "2026-08-01T14:03:14.627673"
+  },
+  {
+    "screen": "game",
+    "start_time": "2026-08-01T14:02:46.009975",
+    "event": "close",
+    "wait_seconds": "11.27",
+    "game_score": 3,
+    "timestamp": "2026-08-01T14:03:25.894003"
+  },
+  {
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "16.48",
+    "game_score": 0,
+    "timestamp": "2026-08-01T14:03:42.401404"
+  },
+  {
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "4.72",
+    "game_score": 0,
+    "timestamp": "2026-08-01T14:03:51.819162"
+  },
+  {
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "5.00",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:04:05.874252"
+  },
+  {
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "3.88",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:04:15.358893"
+  },
+  {
+    "user_id": null,
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "3.82",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:09:31.791930"
+  },
+  {
+    "user_id": "a52c2407-a958-48c4-a31d-7f801497b760",
+    "screen": "skeleton",
+    "start_time": "2026-08-01T14:09:36.467050",
+    "event": "close",
+    "wait_seconds": "1.70",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:09:41.770312"
+  },
+  {
+    "user_id": null,
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "5.76",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:09:42.268397"
+  },
+  {
+    "user_id": null,
+    "screen": null,
+    "start_time": null,
+    "event": "close",
+    "wait_seconds": "1.78",
+    "game_score": 1,
+    "timestamp": "2026-08-01T14:09:48.285197"
+  },
+  {
+    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
+    "screen": "stay",
+    "start_time": "2026-08-01T14:09:51.832736",
+    "event": "close",
+    "wait_seconds": "7.13",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:09:58.999217"
+  },
+  {
+    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
+    "screen": "stay",
+    "start_time": "2026-08-01T14:09:51.832736",
+    "event": "close",
+    "wait_seconds": "54.92",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:10:55.673043"
+  },
+  {
+    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
+    "screen": "stay",
+    "start_time": "2026-08-01T14:09:51.832736",
+    "event": "close",
+    "wait_seconds": "1.24",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:10:56.914458"
+  },
+  {
+    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
+    "screen": "stay",
+    "start_time": "2026-08-01T14:09:51.832736",
+    "event": "close",
+    "wait_seconds": "2.75",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:10:59.683135"
+  },
+  {
+    "user_id": "97d24e48-ab52-4713-8f51-6b4288e02b71",
+    "screen": "stay",
+    "start_time": "2026-08-01T14:09:51.832736",
+    "event": "close",
+    "wait_seconds": "13.07",
+    "game_score": null,
+    "timestamp": "2026-08-01T14:11:14.585394"
+  }
+]

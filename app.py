@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import uuid
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify, session
 
@@ -40,6 +41,7 @@ def index():
 @app.route("/loading")
 def loading():
     if "screen" not in session:
+        session["user_id"] = session.get("user_id", str(uuid.uuid4()))
         session["screen"] = next_screen()
         session["start_time"] = datetime.now().isoformat()
     return render_template("loading.html", screen=session["screen"])
@@ -49,6 +51,7 @@ def loading():
 def event():
     body = request.get_json()
     record = {
+        "user_id": session.get("user_id"),
         "screen": session.get("screen"),
         "start_time": session.get("start_time"),
         "event": body.get("event"),          # "close" | "refresh" | "waited"

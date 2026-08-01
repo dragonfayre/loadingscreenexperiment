@@ -18,6 +18,13 @@
     .skel-line  { height: 14px; }
     .skel-line.short { width: 75%; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    /* --- stay --- */
+    #stay-wrap { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f5f5f5; }
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f5f5f5; }
+    h1 { margin-bottom: 8px; }
+    p { color: #555; margin-bottom: 32px; }
+    button { padding: 14px 36px; font-size: 16px; background: #2563eb; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
 
     /* --- game --- */
     #game-wrap { text-align: center; }
@@ -27,9 +34,6 @@
     #circle { position: absolute; width: 52px; height: 52px; background: #2563eb; border-radius: 50%; cursor: pointer; transition: background 0.1s; }
     #circle:hover { background: #1d4ed8; }
 
-    /* --- stay --- */
-    #stay-wrap { text-align: center; color: #555; }
-    #stay-wrap h2 { margin-bottom: 8px; color: #111; }
   </style>
 </head>
 <body>
@@ -38,9 +42,11 @@
   <!-- intentionally blank -->
 
 {% elif screen == "stay" %}
+  <!-- start page content, tab title is the only hint -->
   <div id="stay-wrap">
-    <h2>Survey</h2>
-    <p>The survey is loading, please wait…</p>
+    <h1>Loading Screen Study</h1>
+    <p>Click below to begin. You'll be taken to a page that loads a survey.</p>
+    <button>Start Survey</button>
   </div>
 
 {% elif screen == "spinner" %}
