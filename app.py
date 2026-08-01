@@ -3,13 +3,16 @@ import os
 import random
 import uuid
 from datetime import datetime
-from flask import Flask, render_template, request, jsonify, session
+from threading import Lock
+from flask import Flask, render_template, request, jsonify, session, Response
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "loading_experiment_secret")
 
 DATA_FILE = "data.json"
 SCREENS = ["blank", "stay", "spinner", "skeleton", "game"]
+DATA_PASSWORD = os.environ.get("DATA_PASSWORD", "admin")
+_lock = Lock()
 
 def next_screen():
     queue = session.get("screen_queue", [])
@@ -59,10 +62,19 @@ def event():
         "game_score": body.get("game_score"),
         "timestamp": datetime.now().isoformat(),
     }
-    data = load_data()
-    data.append(record)
-    save_data(data)
+    with _lock:
+        data = load_data()
+        data.append(record)
+        save_data(data)
     return jsonify(ok=True)
+
+
+@app.route("/data")
+def data_view():
+    auth = request.authorization
+    if not auth or auth.password != DATA_PASSWORD:
+        return Response("Unauthorized", 401, {"WWW-Authenticate": 'Basic realm="data"'})
+    return jsonify(load_data())
 
 
 if __name__ == "__main__":
