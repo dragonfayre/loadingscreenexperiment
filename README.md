@@ -8,6 +8,8 @@ Test Cases:
 
 > Skeleton Screen
 
-> Loading Bar
+> stays the same
 
 > Spinner
+
+> Mini clicking game 
