@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; }
+
+    /* --- spinner --- */
+    .spinner { width: 56px; height: 56px; border: 6px solid #e5e7eb; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* --- skeleton --- */
+    .skeleton-wrap { width: 340px; display: flex; flex-direction: column; gap: 12px; }
+    .skel { background: #e5e7eb; border-radius: 6px; animation: pulse 1.4s ease-in-out infinite; }
+    .skel-title { height: 24px; width: 60%; }
+    .skel-line  { height: 14px; }
+    .skel-line.short { width: 75%; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* --- game --- */
+    #game-wrap { text-align: center; }
+    #game-wrap p { margin-bottom: 12px; color: #555; }
+    #score-display { font-size: 20px; font-weight: bold; margin-bottom: 16px; }
+    #game-area { position: relative; width: 360px; height: 260px; background: #f0f9ff; border: 2px solid #bae6fd; border-radius: 10px; overflow: hidden; }
+    #circle { position: absolute; width: 52px; height: 52px; background: #2563eb; border-radius: 50%; cursor: pointer; transition: background 0.1s; }
+    #circle:hover { background: #1d4ed8; }
+
+    /* --- stay --- */
+    #stay-wrap { text-align: center; color: #555; }
+    #stay-wrap h2 { margin-bottom: 8px; color: #111; }
+  </style>
+</head>
+<body>
+
+{% if screen == "blank" %}
+  <!-- intentionally blank -->
+
+{% elif screen == "stay" %}
+  <div id="stay-wrap">
+    <h2>Survey</h2>
+    <p>The survey is loading, please wait…</p>
+  </div>
+
+{% elif screen == "spinner" %}
+  <div class="spinner"></div>
+  <p style="margin-top:20px;color:#555;">Loading survey…</p>
+
+{% elif screen == "skeleton" %}
+  <div class="skeleton-wrap">
+    <div class="skel skel-title"></div>
+    <div class="skel skel-line"></div>
+    <div class="skel skel-line short"></div>
+    <div class="skel skel-line"></div>
+    <div class="skel skel-line short"></div>
+    <div class="skel skel-line"></div>
+  </div>
+
+{% elif screen == "game" %}
+  <div id="game-wrap">
+    <p>Survey loading — play while you wait!</p>
+    <div id="score-display">Score: 0</div>
+    <div id="game-area">
+      <div id="circle"></div>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  const SCREEN = "{{ screen }}";
+  const startTime = Date.now();
+  let gameScore = 0;
+  let eventSent = false;
+
+  // --- game logic ---
+  if (SCREEN === "game") {
+    const area = document.getElementById("game-area");
+    const circle = document.getElementById("circle");
+    const scoreEl = document.getElementById("score-display");
+
+    function moveCircle() {
+      const maxX = area.clientWidth - circle.clientWidth;
+      const maxY = area.clientHeight - circle.clientHeight;
+      circle.style.left = Math.random() * maxX + "px";
+      circle.style.top  = Math.random() * maxY + "px";
+    }
+
+    moveCircle();
+    circle.addEventListener("click", () => {
+      gameScore++;
+      scoreEl.textContent = "Score: " + gameScore;
+      moveCircle();
+    });
+  }
+
+  // --- send event to server ---
+  function sendEvent(type) {
+    if (eventSent) return;
+    eventSent = true;
+    const payload = {
+      event: type,
+      wait_seconds: ((Date.now() - startTime) / 1000).toFixed(2),
+      game_score: SCREEN === "game" ? gameScore : null,
+    };
+    // use sendBeacon so it fires even on page unload
+    navigator.sendBeacon("/event", new Blob([JSON.stringify(payload)], { type: "application/json" }));
+  }
+
+  // detect close / navigate away
+  window.addEventListener("pagehide", () => {
+    // distinguish refresh vs close is unreliable cross-browser;
+    // we use visibilitychange as a best-effort signal
+    sendEvent("close_or_refresh");
+  });
+
+  // more reliable: visibilitychange hidden = user switched away / closed
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      sendEvent("close_or_refresh");
+    }
+  });
+</script>
+</body>
+</html>
