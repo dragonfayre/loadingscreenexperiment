@@ -1,18 +1,17 @@
-import json
 import os
 import random
 import uuid
 from datetime import datetime
-from threading import Lock
 from flask import Flask, render_template, request, jsonify, session, Response
+from supabase import create_client
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "loading_experiment_secret")
 
-DATA_FILE = "data.json"
 SCREENS = ["blank", "stay", "spinner", "skeleton", "game"]
 DATA_PASSWORD = os.environ.get("DATA_PASSWORD", "admin")
-_lock = Lock()
+db = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_KEY"])
+
 
 def next_screen():
     queue = session.get("screen_queue", [])
@@ -22,18 +21,6 @@ def next_screen():
     screen = queue.pop()
     session["screen_queue"] = queue
     return screen
-
-
-def load_data():
-    if not os.path.exists(DATA_FILE):
-        return []
-    with open(DATA_FILE) as f:
-        return json.load(f)
-
-
-def save_data(data):
-    with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=2)
 
 
 @app.route("/")
@@ -57,15 +44,12 @@ def event():
         "user_id": session.get("user_id"),
         "screen": session.get("screen"),
         "start_time": session.get("start_time"),
-        "event": body.get("event"),          # "close" | "refresh" | "waited"
+        "event": body.get("event"),
         "wait_seconds": body.get("wait_seconds"),
         "game_score": body.get("game_score"),
         "timestamp": datetime.now().isoformat(),
     }
-    with _lock:
-        data = load_data()
-        data.append(record)
-        save_data(data)
+    db.table("responses").insert(record).execute()
     return jsonify(ok=True)
 
 
@@ -74,7 +58,7 @@ def data_view():
     auth = request.authorization
     if not auth or auth.password != DATA_PASSWORD:
         return Response("Unauthorized", 401, {"WWW-Authenticate": 'Basic realm="data"'})
-    return jsonify(load_data())
+    return jsonify(db.table("responses").select("*").execute().data)
 
 
 if __name__ == "__main__":
