@@ -42,6 +42,7 @@ def index():
 def loading():
     if "screen" not in session:
         session["user_id"] = session.get("user_id", str(uuid.uuid4()))
+        session["name"] = request.args.get("name", "anonymous")
         session["screen"] = next_screen()
         session["start_time"] = datetime.now().isoformat()
     return render_template("loading.html", screen=session["screen"])
@@ -52,6 +53,7 @@ def event():
     body = request.get_json()
     record = {
         "user_id": session.get("user_id"),
+        "name": session.get("name"),
         "screen": session.get("screen"),
         "start_time": session.get("start_time"),
         "event": body.get("event"),
