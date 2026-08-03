@@ -10,7 +10,10 @@ app.secret_key = os.environ.get("SECRET_KEY", "loading_experiment_secret")
 
 SCREENS = ["blank", "stay", "spinner", "skeleton", "game"]
 DATA_PASSWORD = os.environ.get("DATA_PASSWORD", "admin")
-db = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_KEY"])
+
+
+def get_db():
+    return create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_KEY"])
 
 
 def next_screen():
@@ -56,7 +59,7 @@ def event():
         "game_score": body.get("game_score"),
         "timestamp": datetime.now().isoformat(),
     }
-    db.table("responses").insert(record).execute()
+    get_db().table("responses").insert(record).execute()
     return jsonify(ok=True)
 
 
@@ -65,7 +68,7 @@ def data_view():
     auth = request.authorization
     if not auth or auth.password != DATA_PASSWORD:
         return Response("Unauthorized", 401, {"WWW-Authenticate": 'Basic realm="data"'})
-    return jsonify(db.table("responses").select("*").execute().data)
+    return jsonify(get_db().table("responses").select("*").execute().data)
 
 
 if __name__ == "__main__":
