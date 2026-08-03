@@ -23,6 +23,13 @@ def next_screen():
     return screen
 
 
+@app.route("/debug-env")
+def debug_env():
+    url = os.environ.get("SUPABASE_URL", "NOT SET")
+    key = os.environ.get("SUPABASE_KEY", "NOT SET")
+    return jsonify(url=url, key_length=len(key), key_prefix=key[:10] if key != "NOT SET" else "NOT SET")
+
+
 @app.route("/")
 def index():
     return render_template("start.html")
